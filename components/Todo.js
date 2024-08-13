@@ -13,7 +13,6 @@ export default function Todo() {
                     throw new Error('Error fetching JSON response');
                 }
                 const result = response.json();
-                // console.log("Asche data");
             }catch (e) {
                 setError(e.message);
              }
@@ -31,7 +30,6 @@ export default function Todo() {
     const handleTodo = () => {
         if(newTodo.trim()) {
             setTodos(prevTodos => [...prevTodos, newTodo]);
-            console.log(todos);
             setNewTodo('');
         }else {
             Alert.alert(
