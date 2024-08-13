@@ -3,6 +3,10 @@ import Header from './components/Header';
 import Todo from './components/Todo';
 import Cards from './components/Cards';
 import ListComponent from './components/ListComponent';
+import SwitchCompo from './components/SwitchCompo';
+import { useState } from 'react';
+import LoginComponent from './components/Login';
+import FetchData from './components/FetchData';
 export default function App() {
 
   const cardData = {
@@ -15,7 +19,7 @@ export default function App() {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar />
       <Header title="Mobile"/>
       <View style={{paddingHorizontal: 20}}>
@@ -27,9 +31,12 @@ export default function App() {
         <Cards {...cardData}/>
         <Cards {...cardData}/>
         <Cards {...cardData}/> */}
-        <ListComponent />
+        {/* <ListComponent /> */}
+        {/* <SwitchCompo /> */}
+        {/* <LoginComponent /> */}
+        <FetchData />
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
 

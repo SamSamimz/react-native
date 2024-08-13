@@ -13,7 +13,7 @@ export default function ListComponent() {
       );
 
       return (
-        <ScrollView style={{backgroundColor: 'darkblue'}}>
+        <>
         <FlatList
           data={dummyData}
           renderItem={renderItem}
@@ -21,7 +21,7 @@ export default function ListComponent() {
           ListHeaderComponent={<Text style={{textAlign: 'center', padding: 10, fontSize: 30}}>Dummy list.</Text>}
           ListFooterComponent={<Text style={{textAlign: 'center', padding: 10, fontSize: 30}}>End of list.</Text>}
           />
-        </ScrollView>
+          </>
       );
 }
 
