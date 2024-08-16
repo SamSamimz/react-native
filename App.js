@@ -1,51 +1,32 @@
-import { ScrollView, StyleSheet, Text, TextInput, View, StatusBar, Platform, SafeAreaView } from 'react-native';
-import Header from './components/Header';
-import Todo from './components/Todo';
-import Cards from './components/Cards';
-import ListComponent from './components/ListComponent';
-import SwitchCompo from './components/SwitchCompo';
-import { useState } from 'react';
-import LoginComponent from './components/Login';
-import FetchData from './components/FetchData';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
+import AboutScreen from './screens/AboutScreen';
+import { Alert, Pressable, Text } from 'react-native';
+
+const Stack = createNativeStackNavigator();
+
 export default function App() {
-
-  const cardData = {
-    name: "Card",
-    image: require('./assets/Pikachu.jpg'),
-    type: "Fire",
-    hp: 90,
-    moves: ['Scratch', 'Ember', 'Growl'],
-    weakness: ['Water'],
-  };
-
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar />
-      <Header title="Mobile"/>
-      <View style={{paddingHorizontal: 20}}>
-          <View>
-            <Text style={{fontSize: 30, paddingVertical: 10}}>Welcome to my first native app.</Text>
-          </View>
-        {/* <Todo /> */}
-        {/* <Cards {...cardData}/>
-        <Cards {...cardData}/>
-        <Cards {...cardData}/>
-        <Cards {...cardData}/> */}
-        {/* <ListComponent /> */}
-        {/* <SwitchCompo /> */}
-        {/* <LoginComponent /> */}
-        <FetchData />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen name='Home' component={HomeScreen} options={{
+            headerStyle: { backgroundColor: '#16536e' },
+            headerTintColor: '#fff',
+            headerTitleStyle: { fontWeight: 'bold' },
+          }} />
+        <Stack.Screen name='About' component={AboutScreen} options={{
+            headerStyle: { backgroundColor: '#16536e' },
+            headerTintColor: '#fff',
+            headerTitleStyle: { fontWeight: 'bold' },
+            headerRight: () => (
+              <Pressable onPress={() => Alert.alert('Menu clicked.')}>
+                <Text style={{fontSize: 20, paddingHorizontal: 10}}>Menu</Text>
+              </Pressable>
+            )
+          }} initialParams={{ name: "Obito" }}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  statusbar: {
-    paddingTop: 10,
-  }
-});
